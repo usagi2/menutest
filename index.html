@@ -1,51 +1,89 @@
-<!doctype html>
-<html>
-    <head>
-        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-        <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
-    </head>
+<!DOCTYPE html>
+<html lang="en">
 
-    <body style="margin: 0; overflow: hidden;">
-        <a-scene
-            vr-mode-ui="enabled: false;"
-            loading-screen="enabled: false;"
-            renderer="logarithmicDepthBuffer: true;"
-            arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
-            id="scene"
-            embedded
-            gesture-detector
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Menu</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
+
+</head>
+
+<body>
+
+    <a-scene
+    vr-mode-ui="enabled: false;"
+    loading-screen="enabled: false;"
+    renderer="logarithmicDepthBuffer: true;"
+    arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+    id="scene"
+    embedded
+    gesture-detector
+    >
+        <a-assets>
+            <a-asset-item id="animated-asset" src=""></a-asset-item>
+        </a-assets>
+
+        <a-marker
+            id="animated-marker"
+            type="pattern"
+            preset="custom"
+            url="assets/marker.patt"
+            raycaster="objects: .clickable"
+            emitevents="true"
+            cursor="fuse: false; rayOrigin: mouse;"
         >
-            <a-assets>
-                <a-asset-item
-                    id="animated-asset"
-                    src="assets/asset.gltf"
-                ></a-asset-item>
-            </a-assets>
+            <a-entity
+                id="bowser-model"
+                scale="2.1364279580541194 2.1364279580541194 2.1364279580541194"
+                animation-mixer="loop: repeat"
+                gltf-model="#animated-asset"
+                class="clickable"
+                gesture-handler
+            ></a-entity>
+        </a-marker>
 
-            <a-marker
-                id="animated-marker"
-                type="pattern"
-                preset="custom"
-                url="assets/marker.patt"
-                raycaster="objects: .clickable"
-                emitevents="true"
-                cursor="fuse: false; rayOrigin: mouse;"
-                id="markerA"
-            >
-                <a-entity
-                    id="bowser-model"
-                    scale="2.1364279580541194 2.1364279580541194 2.1364279580541194"
-                    animation-mixer="loop: repeat"
-                    gltf-model="#animated-asset"
-                    class="clickable"
-                    gesture-handler
-                ></a-entity>
-            </a-marker>
+        <a-entity camera></a-entity>
+    </a-scene>
+    <!-- Main Category Buttons -->
+    <div id="main-categories" class="flex flex-col items-center justify-center">
+        <button id="softDrinks">Soft Drinks</button>
+        <button id="cocktails">Cocktails</button>
+    </div>
 
-            <a-entity camera></a-entity>
-        </a-scene>
-    </body>
+    <!-- Soft Drinks Models -->
+    <div id="softdrinks-models" class="model-container" style="display:none;">
+        <div style="width: 50%; display: inline-block;" class="non-selectable-div"></div>
+        <div class="model-button" data-model="model1" data-thumbnail="assets/image_apple.jpg"></div>
+        <div class="model-button" data-model="model2" data-thumbnail="assets/image_banana.jpg"></div>
+        <button data-model="model3" class="model-button bg-yellow-500 text-white rounded-full">3</button>
+        <button data-model="model4" class="model-button bg-purple-500 text-white rounded-full">4</button>
+        <button data-model="model5" class="model-button bg-blue-300 text-white rounded-full">5</button>
+        <div style="width: 50%; display: inline-block;" class="non-selectable-div"></div>
+    </div>
+
+    <div id="cocktails-models" class="model-container" style="display:none;">
+        <div style="width: 50%; display: inline-block;" class="non-selectable-div"></div>
+        <div class="model-button" data-model="cocktail1" data-thumbnail="assets/image_banana.jpg"></div>
+        <div class="model-button" data-model="cocktail2" data-thumbnail="assets/image_apple.jpg"></div>
+        <button data-model="model3" class="model-button bg-yellow-500 text-white rounded-full">3</button>
+        <button data-model="model4" class="model-button bg-purple-500 text-white rounded-full">4</button>
+        <button data-model="model5" class="model-button bg-blue-300 text-white rounded-full">5</button>
+        <div style="width: 50%; display: inline-block;" class="non-selectable-div"></div>
+    </div>
+
+    <button id="back-button" class="hidden absolute top-0 left-0 p-4" onclick="goBack()">
+        <span class="material-symbols-outlined">arrow_back_ios</span>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+
 </html>
