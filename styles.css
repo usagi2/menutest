@@ -1,12 +1,11 @@
 body, html {
     width: 100%;
     height: 100%;
-    margin: 0;
+    margin: 0 !important;
     padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
 }
 
 #main-categories {
@@ -16,11 +15,6 @@ body, html {
     justify-content: center;
     position: absolute;
     gap: 1rem;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: auto;
     z-index: 1;
 }
 
@@ -49,18 +43,7 @@ body, html {
     color: red;
 }
 
-#cocktails-models {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    white-space: nowrap;
-    overflow-x: scroll;
-    scroll-behavior: smooth; /* Adds smooth scrolling */
-    scroll-snap-type: x mandatory; /* This property makes the container snap to the child items */
-}
-
-#softdrinks-models{
+#cocktails-models, #softdrinks-models {
     display: none;
     position: fixed;
     bottom: 0;
@@ -103,11 +86,6 @@ button:active, button:focus {
 }
 
 a-scene {
-    display: block;
-    height: 100vh; 
-    width: 100vw;
-    position: fixed;
-    top: 0;
-    left: 0;
     z-index: 0;
+    border: 2px solid red;  /* Just for debugging, remove when done */
 }
