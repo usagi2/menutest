@@ -92,6 +92,22 @@ button:active, button:focus {
 }
 
 a-scene {
+    display: block;
+    height: 100vh !important;
+    width: 100vw !important;
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 0;
     border: 2px solid red;  /* Just for debugging, remove when done */
+}
+
+a-scene canvas {
+    display: block !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 0;
 }
