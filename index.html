@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no, minimum-scale=1, maximum-scale=1">
     <title>AR Menu</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
@@ -18,40 +18,7 @@
 
 <body>
 
-    <a-scene
-    vr-mode-ui="enabled: false;"
-    loading-screen="enabled: false;"
-    renderer="logarithmicDepthBuffer: true;"
-    arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960;"
-    id="scene"
-    embedded
-    gesture-detector
-    >
-        <a-assets>
-            <a-asset-item id="animated-asset" ></a-asset-item>
-        </a-assets>
-
-        <a-marker
-            id="animated-marker"
-            type="pattern"
-            preset="custom"
-            url="assets/marker.patt"
-            raycaster="objects: .clickable"
-            emitevents="true"
-            cursor="fuse: false; rayOrigin: mouse;"
-        >
-            <a-entity
-                id="bowser-model"
-                scale="2.1364279580541194 2.1364279580541194 2.1364279580541194"
-                animation-mixer="loop: repeat"
-                gltf-model="#animated-asset"
-                class="clickable"
-                gesture-handler
-            ></a-entity>
-        </a-marker>
-
-        <a-entity camera></a-entity>
-    </a-scene>
+    
     <!-- Main Category Buttons -->
     <div id="main-categories" class="flex flex-col items-center justify-center">
         <button id="softDrinks">Soft Drinks</button>
@@ -82,6 +49,41 @@
     <button id="back-button" class="hidden absolute top-0 left-0 p-4" onclick="goBack()">
         <span class="material-symbols-outlined">arrow_back_ios</span>
     </button>
+
+    <a-scene
+    vr-mode-ui="enabled: false;"
+    loading-screen="enabled: false;"
+    renderer="logarithmicDepthBuffer: true;"
+    arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+    id="scene"
+    embedded
+    gesture-detector
+    >
+        <a-assets>
+            <a-asset-item id="animated-asset" ></a-asset-item>
+        </a-assets>
+
+        <a-marker
+            id="animated-marker"
+            type="pattern"
+            preset="custom"
+            url="assets/marker.patt"
+            raycaster="objects: .clickable"
+            emitevents="true"
+            cursor="fuse: false; rayOrigin: mouse;"
+        >
+            <a-entity
+                id="bowser-model"
+                scale="2.1364279580541194 2.1364279580541194 2.1364279580541194"
+                animation-mixer="loop: repeat"
+                gltf-model="#animated-asset"
+                class="clickable"
+                gesture-handler
+            ></a-entity>
+        </a-marker>
+
+        <a-entity camera></a-entity>
+    </a-scene>
 
     <script src="script.js"></script>
 </body>
