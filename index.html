@@ -28,8 +28,8 @@
     <!-- Soft Drinks Models -->
     <div id="softdrinks-models" class="model-container" style="display:none;">
         <div style="width: 50%; display: inline-block;" class="non-selectable-div"></div>
-        <div class="model-button" data-model="assets/model1.gltf" data-thumbnail="assets/image_apple.jpg"></div>
-        <div class="model-button" data-model="assets/model2.gltf" data-thumbnail="assets/image_banana.jpg"></div>
+        <div class="model-button" data-model="assets/model2.gltf" data-thumbnail="assets/image_apple.jpg"></div>
+        <div class="model-button" data-model="assets/model3.gltf" data-thumbnail="assets/image_banana.jpg"></div>
         <button data-model="model3" class="model-button bg-yellow-500 text-white rounded-full">3</button>
         <button data-model="model4" class="model-button bg-purple-500 text-white rounded-full">4</button>
         <button data-model="model5" class="model-button bg-blue-300 text-white rounded-full">5</button>
@@ -38,8 +38,8 @@
 
     <div id="cocktails-models" class="model-container" style="display:none;">
         <div style="width: 50%; display: inline-block;" class="non-selectable-div"></div>
-        <div class="model-button" data-model="assets/model2.gltf" data-thumbnail="assets/image_banana.jpg"></div>
-        <div class="model-button" data-model="assets/model1.gltf" data-thumbnail="assets/image_apple.jpg"></div>
+        <div class="model-button" data-model="assets/model3.gltf" data-thumbnail="assets/image_banana.jpg"></div>
+        <div class="model-button" data-model="assets/model2.gltf" data-thumbnail="assets/image_apple.jpg"></div>
         <button data-model="model3" class="model-button bg-yellow-500 text-white rounded-full">3</button>
         <button data-model="model4" class="model-button bg-purple-500 text-white rounded-full">4</button>
         <button data-model="model5" class="model-button bg-blue-300 text-white rounded-full">5</button>
@@ -54,7 +54,8 @@
     vr-mode-ui="enabled: false;"
     loading-screen="enabled: false;"
     renderer="logarithmicDepthBuffer: true;"
-    arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+    mindar-image="filterMinCF:0.0001; filterBeta: 0.001"
+    arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960;"
     id="scene"
     
     gesture-detector
