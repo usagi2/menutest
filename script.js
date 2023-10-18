@@ -48,9 +48,11 @@ function goBack() {
     document.getElementById('back-button').style.display = 'none';
 }
 
-function loadARContent(model) {
-    console.log('Loading AR content for:', model);
+function loadARModel(modelURL) {
+    const entity = document.querySelector('#bowser-model');
+    entity.setAttribute('gltf-model', modelURL);
 }
+
 
 function bindEventListeners(element) {
     let scrollTimeout;
@@ -109,5 +111,9 @@ function handleSnap(subCategories) {
     });
     if (closestButton) {
         closestButton.classList.add('selected-button');
+        const modelURL = closestButton.getAttribute('data-model');
+        if (modelURL) {
+            loadARModel(modelURL);
+        }
     }
 }
