@@ -99,5 +99,5 @@ a-scene {
 
 a-scene canvas {
     z-index: -1;
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
 }
