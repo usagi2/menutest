@@ -49,6 +49,7 @@ function goBack() {
 }
 
 function loadARModel(modelURL) {
+    console.log("Loading model:", modelURL);  // This will log the model URL
     const entity = document.querySelector('#bowser-model');
     entity.setAttribute('gltf-model', modelURL);
 }
