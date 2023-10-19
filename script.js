@@ -48,7 +48,7 @@ function goBack() {
     document.getElementById('back-button').style.display = 'none';
 }
 
-function loadARModel(modelURL) {
+function loadARModel(modelURL, scale) {
     const marker = document.querySelector('#animated-marker');
     const existingEntity = document.querySelector('#bowser-model');
     if (existingEntity) {
@@ -57,7 +57,7 @@ function loadARModel(modelURL) {
 
     const newEntity = document.createElement('a-entity');
     newEntity.setAttribute('id', 'bowser-model');
-    newEntity.setAttribute('scale', '3');
+    newEntity.setAttribute('scale', scale);
     newEntity.setAttribute('animation-mixer', 'loop: repeat');
     newEntity.setAttribute('gltf-model', modelURL);
     newEntity.setAttribute('class', 'clickable');
@@ -126,8 +126,9 @@ function handleSnap(subCategories) {
     if (closestButton) {
         closestButton.classList.add('selected-button');
         const modelURL = closestButton.getAttribute('data-model');
+        const modelScale = closestButton.getAttribute('data-scale');
         if (modelURL) {
-            loadARModel(modelURL);
+            loadARModel(modelURL, modelScale);
         }
     }
 }
