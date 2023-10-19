@@ -57,7 +57,7 @@ function loadARModel(modelURL) {
 
     const newEntity = document.createElement('a-entity');
     newEntity.setAttribute('id', 'bowser-model');
-    newEntity.setAttribute('scale', '3 2 2');
+    newEntity.setAttribute('scale', '3');
     newEntity.setAttribute('animation-mixer', 'loop: repeat');
     newEntity.setAttribute('gltf-model', modelURL);
     newEntity.setAttribute('class', 'clickable');
