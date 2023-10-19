@@ -75,7 +75,7 @@ function bindEventListeners(element) {
     element.addEventListener('scroll', function () {
         if (!isScrolling) {
             clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => handleSnap(element), 150);
+            scrollTimeout = setTimeout(() => handleSnap(element), 100);
         }
     });
 
@@ -86,7 +86,7 @@ function bindEventListeners(element) {
     window.addEventListener('mouseup', function () {
         isScrolling = false;
         clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => handleSnap(element), 150);
+        scrollTimeout = setTimeout(() => handleSnap(element), 100);
     });
 
     element.addEventListener('touchstart', function () {
@@ -96,7 +96,7 @@ function bindEventListeners(element) {
     window.addEventListener('touchend', function () {
         isScrolling = false;
         clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => handleSnap(element), 150);
+        scrollTimeout = setTimeout(() => handleSnap(element), 100);
     });
 }
 
