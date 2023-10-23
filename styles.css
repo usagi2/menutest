@@ -72,7 +72,7 @@ body, html {
     vertical-align: middle;
     scroll-snap-align: center; /* Makes the items snap-able */
     border: 2px solid transparent; /* Default state */
-    transition: border-color 0.3s; /* Smooth transition for border color change */
+    transition: border-color 0.2s; /* Smooth transition for border color change */
     background-size: 70%; /* 'cover' or 'contain' based on your preference */
     background-position: center;
     background-repeat: no-repeat;
