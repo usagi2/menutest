@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no, minimum-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0, orientation=portrait">
     <title>AR Menu</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
@@ -26,9 +26,9 @@
     <!-- Soft Drinks Models -->
     <div id="softdrinks-models" class="model-container" style="display:none;">
         <div style="width: 50%; display: inline-block;" class="non-selectable-div"></div>
-        <div class="model-button" data-model="assets/model1.gltf" data-scale="5 5 3" data-thumbnail="assets/image_banana.jpg"></div>
+        <div class="model-button" data-model="assets/model1.gltf" data-scale="2" data-thumbnail="assets/image_banana.jpg"></div>
         <div class="model-button" data-model="assets/model1.gltf" data-scale="3" data-thumbnail="assets/image_banana.jpg"></div>
-        <div class="model-button" data-model="assets/model3.gltf" data-scale="0.02 0.02 0.02" data-thumbnail="assets/image_apple.jpg"></div>
+        <div class="model-button" data-model="assets/model3.gltf" data-scale="0.025 0.025 0.025" data-thumbnail="assets/image_apple.jpg"></div>
         <button data-model="model4" class="model-button bg-purple-500 text-white rounded-full">4</button>
         <button data-model="model5" class="model-button bg-blue-300 text-white rounded-full">5</button>
         <div style="width: 50%; display: inline-block;" class="non-selectable-div"></div>
@@ -38,7 +38,7 @@
         <div style="width: 50%; display: inline-block;" class="non-selectable-div"></div>
         <div class="model-button" data-model="assets/model2.gltf" data-scale="0.001" data-thumbnail="assets/image_apple.jpg"></div>
         <div class="model-button" data-model="assets/model1.gltf" data-scale="5 5 5" data-thumbnail="assets/image_banana.jpg"></div>
-        <div class="model-button" data-model="assets/model3.gltf" data-scale="0.05 0.05 0.05" data-thumbnail="assets/image_apple.jpg"></div>
+        <div class="model-button" data-model="assets/model3.gltf" data-scale="0.025 0.025 0.025" data-thumbnail="assets/image_apple.jpg"></div>
         <button data-model="model4" class="model-button bg-purple-500 text-white rounded-full">4</button>
         <button data-model="model5" class="model-button bg-blue-300 text-white rounded-full">5</button>
         <div style="width: 50%; display: inline-block;" class="non-selectable-div"></div>
@@ -57,10 +57,6 @@
     id="scene"
     gesture-detector
     >
-        <a-assets>
-            <a-asset-item id="animated-asset"></a-asset-item>
-        </a-assets>
-
         <a-marker
             id="animated-marker"
             type="pattern"
@@ -73,8 +69,8 @@
             <a-entity
                 id="bowser-model"
                 animation-mixer="loop: repeat"
-                gltf-model="#animated-asset"
                 class="clickable"
+                position ="0 0 0"
                 gesture-handler
             ></a-entity>
         </a-marker>
