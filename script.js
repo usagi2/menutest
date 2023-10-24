@@ -61,7 +61,7 @@ function loadARModel(modelURL, scale) {
     newEntity.setAttribute('animation-mixer', 'loop: repeat');
     newEntity.setAttribute('gltf-model', modelURL);
     newEntity.setAttribute('class', 'clickable');
-    newEntity.setAttribute('gesture-handler', '');
+    newEntity.setAttribute('gesture-handler');
 
     marker.appendChild(newEntity);
 }
