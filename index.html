@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0, orientation=portrait">
     <title>AR Menu</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
@@ -36,7 +37,7 @@
     <div id="cocktails-models" class="model-container" style="display:none;">
         <div style="width: 50%; display: inline-block;" class="non-selectable-div"></div>
         <div class="model-button" data-model="assets/model2.gltf" data-scale="0.03" data-thumbnail="assets/image_apple.jpg"></div>
-        <div class="model-button" data-model="assets/model1.gltf" data-scale="3 3 3" data-thumbnail="assets/image_banana.jpg"></div>
+        <div class="model-button" data-model="assets/model1.gltf" data-scale="3 3 2" data-thumbnail="assets/image_banana.jpg"></div>
         <div class="model-button" data-model="assets/model3.gltf" data-scale="0.025 0.025 0.025" data-thumbnail="assets/image_apple.jpg"></div>
         <button data-model="model4" class="model-button bg-purple-500 text-white rounded-full">4</button>
         <button data-model="model5" class="model-button bg-blue-300 text-white rounded-full">5</button>
@@ -68,7 +69,7 @@
                 id="bowser-model"
                 animation-mixer="loop: repeat"
                 class="clickable"
-                position ="0 -1 0"
+                position ="0 0 0"
                 gesture-handler
             ></a-entity>
         </a-marker>

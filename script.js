@@ -1,3 +1,18 @@
+const categoryMapping = {
+    softdrinks: 'softdrinks-models',
+    cocktails: 'cocktails-models'
+};
+
+function selectCategory(category) {
+    document.getElementById('main-categories').style.display = 'none';
+    if (categoryMapping[category]) {
+        const modelContainer = document.getElementById(categoryMapping[category]);
+        modelContainer.style.display = 'block';
+        handleSnap(modelContainer);
+    }
+    document.getElementById('back-button').style.display = 'block';
+}
+
 document.addEventListener('DOMContentLoaded', function () {
 
     document.body.addEventListener('click', function (event) {
@@ -21,23 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-function selectCategory(category) {
-    console.log(category);
-    document.getElementById('main-categories').style.display = 'none';
-
-    if (category === 'softdrinks') {
-        const softdrinksModels = document.getElementById('softdrinks-models');
-        softdrinksModels.style.display = 'block';
-        handleSnap(softdrinksModels);
-    } else if (category === 'cocktails') {
-        const cocktailsModels = document.getElementById('cocktails-models');
-        cocktailsModels.style.display = 'block';
-        handleSnap(cocktailsModels);
-    }
-
-    document.getElementById('back-button').style.display = 'block';
-}
-
 function goBack() {
     const modelContainers = document.querySelectorAll('.model-container');
     modelContainers.forEach(container => {
@@ -47,6 +45,7 @@ function goBack() {
     document.getElementById('main-categories').style.display = 'flex';
     document.getElementById('back-button').style.display = 'none';
 }
+
 
 function loadARModel(modelURL, scale) {
     const marker = document.querySelector('#animated-marker');
@@ -61,43 +60,29 @@ function loadARModel(modelURL, scale) {
     newEntity.setAttribute('animation-mixer', 'loop: repeat');
     newEntity.setAttribute('gltf-model', modelURL);
     newEntity.setAttribute('class', 'clickable');
+    newEntity.setAttribute('position', '0 0 0');
     newEntity.setAttribute('gesture-handler');
 
     marker.appendChild(newEntity);
 }
 
-
-
 function bindEventListeners(element) {
     let scrollTimeout;
-    let isScrolling = false;
 
-    element.addEventListener('scroll', function () {
-        if (!isScrolling) {
+    const debounce = (func, delay) => {
+        return function() {
             clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => handleSnap(element), 100);
-        }
-    });
+            scrollTimeout = setTimeout(func, delay);
+        };
+    };
 
-    element.addEventListener('mousedown', function () {
-        isScrolling = true;
-    });
+    const handleDebouncedSnap = debounce(() => handleSnap(element), 100);
 
-    window.addEventListener('mouseup', function () {
-        isScrolling = false;
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => handleSnap(element), 100);
-    });
-
-    element.addEventListener('touchstart', function () {
-        isScrolling = true;
-    });
-
-    window.addEventListener('touchend', function () {
-        isScrolling = false;
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => handleSnap(element), 100);
-    });
+    element.addEventListener('scroll', handleDebouncedSnap);
+    element.addEventListener('mousedown', () => clearTimeout(scrollTimeout));
+    window.addEventListener('mouseup', handleDebouncedSnap);
+    element.addEventListener('touchstart', () => clearTimeout(scrollTimeout));
+    window.addEventListener('touchend', handleDebouncedSnap);
 }
 
 function handleSnap(subCategories) {
